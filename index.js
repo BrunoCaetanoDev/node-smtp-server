@@ -1,12 +1,10 @@
-const http = require('http');
-const nodemailer = require('nodemailer');
 const express = require('express');
+const nodemailer = require('nodemailer');
 
 const PORT = process.env.PORT || 3000;
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT;
 const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
 const SMTP_SERVICE = process.env.SMTP_SERVICE || 'gmail';
-
 
 let transporter = nodemailer.createTransport({
  service: SMTP_SERVICE,
@@ -15,7 +13,6 @@ let transporter = nodemailer.createTransport({
         pass: GMAIL_PASSWORD,
     }
 });
-
 
 const mailOptions = {
   from: 'brunoaccdev@gmail.com', // sender address
