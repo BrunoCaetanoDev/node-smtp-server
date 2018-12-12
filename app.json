@@ -1,0 +1,7 @@
+{
+  "name": "SMTP Server: Node.js",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/BrunoCaetanoDev/NodeSMTPServer",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
