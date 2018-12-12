@@ -5,10 +5,11 @@ const express = require('express');
 const PORT = process.env.PORT || 3000;
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT;
 const GMAIL_PASSWORD = process.env.GMAIL_PASSWORD;
+const SMTP_SERVICE = process.env.SMTP_SERVICE || 'gmail';
 
 
 let transporter = nodemailer.createTransport({
- service: 'gmail',
+ service: SMTP_SERVICE,
  host: 'smtp.gmail.com',
  auth: {
         user: GMAIL_ACCOUNT,
@@ -16,12 +17,17 @@ let transporter = nodemailer.createTransport({
     }
 });
 
+
+const mailOptions = {
+  from: 'brunoaccdev@gmail.com', // sender address
+  to: 'brunoaccdev@gmail.com', // list of receivers
+  subject: 'Subject of your email', // Subject line
+  html: 'Sent from express'// plain text body
+};
+
 express()
   .post('/sendMail', function (req, res) {
-    console.log("You were redirected from: " + req.headers.origin);
-    console.log("You were redirected from: " + GMAIL_ACCOUNT);
-
-
+    console.log("You are using the SMTP service " + SMTP_SERVICE + " and user account " + GMAIL_ACCOUNT);
     transporter.sendMail(mailOptions, function (err, info) {
 
        if(err) {
@@ -37,11 +43,4 @@ express()
     res.end();
 
   })
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
-const mailOptions = {
-  from: 'brunoaccdev@gmail.com', // sender address
-  to: 'brunoaccdev@gmail.com', // list of receivers
-  subject: 'Subject of your email', // Subject line
-  html: 'Sent from express'// plain text body
-};
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
