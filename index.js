@@ -28,11 +28,9 @@ express()
     transporter.sendMail(mailOptions, function (err, info) {
 
        if(err) {
-         res.writeHead(500);
          console.log(err)
        }
        else {
-         res.writeHead(200);
          console.log(info);
        }
     });
