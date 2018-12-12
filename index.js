@@ -24,7 +24,7 @@ const mailOptions = {
 express()
   .post('/send', function (req, res) {
     console.log("You are using the SMTP service " + SMTP_SERVICE + " and user account " + GMAIL_ACCOUNT);
-
+    console.log(GMAIL_PASSWORD);
     transporter.sendMail(mailOptions, function (err, info) {
 
        if(err) {
