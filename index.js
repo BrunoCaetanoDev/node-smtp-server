@@ -41,6 +41,7 @@ let mailOptions = {
 express()
   .use(bodyParser.json())
   .use(cors)
+  .options('/send', cors())
   .post('/send', function (req, res) {
 
     mailOptions.subject = req.body.name + " | " + req.body.company + " | " + req.body.subject;
