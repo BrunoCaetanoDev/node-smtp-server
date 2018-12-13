@@ -44,7 +44,7 @@ express()
       res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
       res.header("Access-Control-Allow-Methods", "GET, POST","PUT");
       next();
-    }
+    })
   .post('/send', function (req, res) {
 
     mailOptions.subject = req.body.name + " | " + req.body.company + " | " + req.body.subject;
