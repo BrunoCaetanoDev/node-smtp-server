@@ -56,7 +56,7 @@ express()
        }
        else {
          console.log(info);
-         res.status(202);
+         res.status(200);
          res.send('Email sent to recipients.');
        }
     });
