@@ -3,7 +3,6 @@ let xoauth2 = require('xoauth2');
 let nodemailer = require('nodemailer');
 let smtpTransport = require('nodemailer-smtp-transport');
 let bodyParser = require("body-parser");
-let cors = require("cors");
 
 const PORT = process.env.PORT || 3000;
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT || 'brunoaccdev@gmail.com';
@@ -40,8 +39,6 @@ let mailOptions = {
 
 express()
   .use(bodyParser.json())
-  .use(cors)
-  .options('/send', cors())
   .post('/send', function (req, res) {
 
     mailOptions.subject = req.body.name + " | " + req.body.company + " | " + req.body.subject;
