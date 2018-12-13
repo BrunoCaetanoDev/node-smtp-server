@@ -15,10 +15,11 @@ let transporter = nodemailer.createTransport(
     {  service: SMTP_SERVICE,
     auth: {
       xoauth2: xoauth2.createXOAuth2Generator(
-        {      user: GMAIL_ACCOUNT,
-        clientId: GOOGLE_CLIENT_ID,
-        clientSecret: GOOGLE_CLIENT_SECRET,
-        refreshToken: GOOGLE_OAUTH2_REFRESH_TOKEN
+        {
+          user: GMAIL_ACCOUNT,
+          clientId: GOOGLE_CLIENT_ID,
+          clientSecret: GOOGLE_CLIENT_SECRET,
+          refreshToken: GOOGLE_OAUTH2_REFRESH_TOKEN
         }
       )
     }
@@ -47,6 +48,5 @@ express()
          res.send('Email sent to recipients.');
        }
     });
-    res.end();
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
