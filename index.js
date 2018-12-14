@@ -47,7 +47,7 @@ express()
     })
   .post('/send', function (req, res) {
 
-    mailOptions.subject = req.body.name + " | " + req.body.company + " | " + req.body.subject;
+    mailOptions.subject = "Bruno Caetano DevFolio | " + req.body.name + " | " + req.body.company + " | " + req.body.subject;
     mailOptions.html = req.body.body;
 
     console.log("Sending email...");
